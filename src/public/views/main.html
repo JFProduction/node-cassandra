@@ -1,8 +1,10 @@
 <div class='container' ng-controller='MainCtrl'>
-    <h1>This is from Cassandra!</h1>
-    <ul>
-        <li ng-repeat='usr in users'>
-            {{ usr.user_name }} joined on {{ usr.join_date | date: 'MMM dd, yyyy' }}
-        </li>
-    </ul>
+    <p>
+        <ul>
+            <li ng-repeat='usr in users'>
+                <a href='#/user/{{ usr.id }}'>{{ usr.user_name }}</a>
+            </li>
+        </ul>
+    </p>
+    <a href='#/adduser'>add user &rarr;</a>
 </div>

@@ -1,3 +1,12 @@
+html, body {
+    background: #04151F !important;
+    color: #ddd;
+}
+
 ul li {
     list-style: none;
+}
+
+h3 {
+    color: #55D6BE;
 }

@@ -6,5 +6,11 @@ var app = angular.module('Cass', ['ngRoute', 'app.controllers', 'app.directives'
                 return 'views/' + url.name + '.html';
             }
         });
+        $routeProvider.when('/:name/:id', {
+            templateUrl: function(url) {
+                return 'views/' + url.name + '.html';
+            },
+            controller: 'UsrCtrl'
+        });
         $routeProvider.otherwise({ templateUrl: 'views/main.html', controller: 'MainCtrl' });
     }]);
