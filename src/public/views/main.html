@@ -1,10 +1,6 @@
 <div class='container' ng-controller='MainCtrl'>
-    <p>
-        <ul>
-            <li ng-repeat='usr in users'>
-                <a href='#/user/{{ usr.id }}'>{{ usr.user_name }}</a>
-            </li>
-        </ul>
-    </p>
+    <div ng-repeat='usr in users'>
+        <userdetails></userdetails>
+    </div></br>
     <a href='#/adduser'>add user &rarr;</a>
 </div>

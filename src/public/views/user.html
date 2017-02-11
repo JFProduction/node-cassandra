@@ -1,0 +1,6 @@
+<div>
+    <h3>Details about: {{ user.user_name }}</h3>
+    <label>email:</label> {{ user.email }}</br>
+    <label>joined:</label> {{ user.join_date | date:'MMM dd, yyyy' }}</br>
+    <label>last logged in:</label> {{ user.last_active | date:'MMM dd, yyyy' }}</br>
+</div>

@@ -1,12 +1,45 @@
 html, body {
-    background: #04151F !important;
-    color: #ddd;
+    background: #fff !important;
+    color: #333;
 }
 
 ul li {
     list-style: none;
 }
 
-h3 {
-    color: #55D6BE;
+.user-wrapper {
+    height: 250px;
+    background: #ddd;
+    color: #04151F;
+    padding: 0px 0px !important;
+    margin: 10px 10px;
+    box-shadow: 0px 10px 10px -10px #333;
+}
+
+.avitar {
+    width: 50px;
+    height: 50px;
+    background: #333;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.user-header {
+    background: #ff5252;
+    width: 100%;
+    height: 95px;
+    padding: 15px;
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+}
+
+.user-content {
+    padding: 20px;
+}
+
+.user-footer {
+    bottom: 30px;
+    padding: 0px 15px;
+    position: absolute;
 }
