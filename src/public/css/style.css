@@ -8,6 +8,17 @@ ul li {
     margin-bottom: 4px;
 }
 
+ul li a {
+    color: #fff;
+}
+
+ul li a:hover,
+ul li a:focus,
+ul li a:active {
+    color: #55DDE0;
+    text-decoration: none;
+}
+
 .sidemenu-wrapper {
     position: absolute;
     width: 200px;
