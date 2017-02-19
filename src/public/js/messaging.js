@@ -1,4 +1,7 @@
 var socket = io('localhost:3000');
+
+// TODO: need to implement some type of login
+//       so we have a username
 var uname = 'jimmyfargo';
 
 $(function() {
