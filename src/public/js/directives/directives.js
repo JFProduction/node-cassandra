@@ -18,4 +18,18 @@ angular.module('app.directives', [])
                 }
             }]
         }
+    }])
+    .directive('messaging', [function() {
+        return {
+            restrict: 'E',         
+            templateUrl: 'views/templates/messaging.tmp.html',
+            controller: ['$scope', function($scope) {
+                $scope.minimizeChat = function() {
+                    // $('.msg-container').toggleClass('minimize');
+                    $('.message-wrapper').toggleClass('minimize');
+                    $('.chat-btn').toggleClass('glyphicon glyphicon-triangle-bottom');
+                    $('.chat-btn').toggleClass('glyphicon glyphicon-triangle-top');
+                }
+            }],
+        }
     }]);

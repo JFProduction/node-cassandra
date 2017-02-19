@@ -86,3 +86,77 @@ ul li a:active {
     padding: 0px 15px;
     position: absolute;
 }
+
+.message-wrapper {
+    position: absolute;
+    bottom: 0;
+    width: 300px;
+    height: 400px;
+    background: #eee;
+    right: 50px;
+    overflow: hidden;
+    transform: all 300ms ease-in-out;
+}
+
+.minimize {
+    height: 50px;
+    bottom: 0;
+    transform: all 300ms ease-in-out;
+}
+
+.chat-header {
+    width: 100%;
+    height: 50px;
+    background: #333;
+    color: #fff;
+    position: absolute;
+    padding: 15px;
+}
+
+.chat-btn {
+    right: 10px;
+    padding: 18px 0px;
+    position: absolute;
+    color: #fff;
+    transform: all 300ms ease-in-out;
+}
+
+.chat-btn:hover {
+    cursor: pointer;
+    color: #ff5252;
+}
+
+.smpl-ul {
+    width: 100%;
+    height: 300px;
+    top: 50px;
+    position: absolute;
+    background: #ddd;
+    font-size: 10px;
+    overflow-y: scroll;
+    overflow: hidden;
+}
+
+.smpl-ul>li {
+    list-style: none;
+    padding: 3px 5px;
+}
+
+#msg-board {
+    margin-top: 350px;
+    width: 100%;
+}
+
+.msg-input {
+    width: 100%;
+    height: 50px;
+    margin: 0 auto;
+    padding: 0px 10px;
+    font-size: 10px;
+    background: #eee;
+    border: none;
+}
+
+.msg-input:focus {
+    outline: none;
+}
