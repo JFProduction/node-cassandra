@@ -14,6 +14,23 @@ client.connect(function(err, result) {
     console.log('We have connected');
 });
 
+app.get('/validate/:uname', function(req, res) {
+    var query = 'SELECT * FROM testing.users WHERE user_name=?';
+    client.execute(query, [req.params.uname], function(err, result) {
+        if (err) {
+            res.status(404).json({
+                message: err
+            });
+        } else {
+            res.status(200).json({
+                success: true,
+                data: result.rows[0],
+                path: 'main'
+            });
+        }
+    });
+});
+
 app.get('/users', function(req, res) {
     var getUsers = 'SELECT * FROM testing.users';
     client.execute(getUsers, [], function(err, result) {
@@ -26,7 +43,8 @@ app.get('/users', function(req, res) {
 });
 
 app.get('/user/:id', function(req, res) {
-    var query = 'SELECT * FROM testing.users WHERE id=?';
+    var query = 'SELECT * FROM testing.users WHERE id=? ALLOW FILTERING';
+    console.log(req.params.id);
     client.execute(query, [req.params.id], function(err, result) {
         if (err) {
             res.status(500).send({ msg: err });

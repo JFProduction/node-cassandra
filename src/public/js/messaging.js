@@ -1,4 +1,4 @@
-var socket = io('localhost:3000');
+var socket = io('localhost:3100');
 
 // TODO: need to implement some type of login
 //       so we have a username
@@ -31,8 +31,7 @@ $(function() {
 });
 
 function sendMessage() {
-    var trimmed = $('#usr-msg').val().trim()
-    console.log(trimmed);
+    var trimmed = $('#usr-msg').val().trim();
     if ("" !== trimmed) {
         var msg = removeTags($('#usr-msg').val().trim());
         
@@ -42,7 +41,6 @@ function sendMessage() {
             $('#msgs').append($('<li>').html('<img src="pics/invalid.png" />')); 
         }
     } else if ("/clear" === trimmed) {
-        console.log('show clear');
         $('#msgs').html('');
     }
     $('#usr-msg').val('');

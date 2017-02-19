@@ -1,6 +1,6 @@
 var app = angular.module('Cass', ['ngRoute', 'app.controllers', 'app.directives', 'app.services'])
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/', { templateUrl: 'views/main.html', controller: 'MainCtrl' });
+        $routeProvider.when('/', { templateUrl: 'views/login.html', controller: 'LoginCtrl' });
         $routeProvider.when('/:name', {
             templateUrl: function(url) {
                 return 'views/' + url.name + '.html';
@@ -12,5 +12,5 @@ var app = angular.module('Cass', ['ngRoute', 'app.controllers', 'app.directives'
             },
             controller: 'UsrCtrl'
         });
-        $routeProvider.otherwise({ templateUrl: 'views/main.html', controller: 'MainCtrl' });
+        $routeProvider.otherwise({ templateUrl: 'views/login.html', controller: 'LoginCtrl' });
     }]);
