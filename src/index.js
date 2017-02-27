@@ -72,5 +72,5 @@ app.post('/addUser', function(req, res) {
 });
 
 app.listen(3090, function() {
-    console.log('app started');
+    console.log('app started on port 3090');
 });

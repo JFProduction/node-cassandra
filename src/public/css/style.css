@@ -1,6 +1,43 @@
 html, body {
-    background: #fff !important;
-    color: #333;
+    background: #26303b !important;
+    color: #7d8790;
+}
+
+.searchnav-wrapper {
+    background: #2b3742;
+    width: 100%;
+    height: 50px;
+}
+
+.search-form {
+    width: 60%;
+    margin: 0 auto;
+    padding-top: 5px;
+}
+
+.search-input {
+    width: 85%;
+    background: transparent;
+    border: none;
+    height: 40px;
+    margin-left: 10px;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #384451;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #384451;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #384451;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #384451;
+}
+
+.search-input:focus {
+    outline: none;
 }
 
 .container {
@@ -11,7 +48,7 @@ html, body {
     margin-top: 100px;
     width: 53%;
     height: 300px;
-    background: #eee;
+    background: #2b3742;
     box-shadow: 0px 10px 10px -10px #333;
 }
 
@@ -23,32 +60,53 @@ html, body {
     padding-top: 50px;
     width: 50%;
     margin: 0 auto;
+    background: #2b3742;
 }
 
-ul li {
+.sidemenu-wrapper ul {
+    width: 100%;
+    padding-left: 0px !important;
+    margin-top: 0px !important;
+}
+
+.sidemenu-wrapper ul li {
     list-style: none;
     margin-bottom: 4px;
+    margin-left: 0px;
 }
 
-ul li a {
+.sidemenu-wrapper ul li:hover {
+    background: #232b35;
+}
+
+.sidemenu-wrapper ul a li {
     color: #fff;
+    padding-left: 15px !important;
+    height: 45px;
+    margin-bottom: 0px !important;
+    line-height: 3em;
 }
 
-ul li a:hover,
-ul li a:focus,
-ul li a:active {
-    color: #55DDE0;
+a {
+    text-decoration: none;
+}
+
+.sidemenu-wrapper ul a li:hover,
+.sidemenu-wrapper ul a li:focus,
+.sidemenu-wrapper ul a li:active {
+    background: #232b35;
     text-decoration: none;
 }
 
 .sidemenu-wrapper {
-    position: absolute;
+    position: fixed;
     width: 200px;
     margin-left: -200px;
     height: 100%;
-    background: #2F4858;
+    background: #303b4c;
     z-index: 9999;
     transition: all 300ms ease-in-out;
+    top: 0;
 }
 
 .hide-menu {
@@ -57,10 +115,16 @@ ul li a:active {
 }
 
 .menu-btn {
-    margin-top: 10px;
+    margin-top: 17px;
     margin-left: 15px;
-    position: absolute;
+    position: fixed;
     transition: all 300ms ease-in-out;
+    z-index: 9999;
+    top: 0;
+}
+
+.my-icon {
+    margin-right: 10px;
 }
 
 .menu-btn:hover {
@@ -74,8 +138,8 @@ ul li a:active {
 
 .user-wrapper {
     height: 294px;
-    background: #ddd;
-    color: #04151F;
+    background: #2b3742;
+    color: #7d8790;
     padding: 0px 0px !important;
     margin: 10px 10px;
     box-shadow: 0px 10px 10px -10px #333;
@@ -89,8 +153,16 @@ ul li a:active {
     margin: 0 auto;
 }
 
+img.adjusted {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
 .user-header {
     background: #ff5252;
+    background-image: url('../imgs/oldschool.png');
     width: 100%;
     height: 120px;
     padding: 15px;
@@ -117,13 +189,13 @@ ul li a:active {
     background: #eee;
     right: 50px;
     overflow: hidden;
-    transform: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
 }
 
 .minimize {
     height: 50px;
     bottom: 0;
-    transform: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
 }
 
 .chat-header {

@@ -5,6 +5,17 @@ angular.module('app.directives', [])
             templateUrl: 'views/templates/user.tmp.html'
         }
     }])
+    .directive('searchnav', [function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'views/templates/searchnav.tmp.html',
+            controller: ['$scope', function($scope) {
+                $scope.search = function() {
+                    console.log('you have searched...');
+                }
+            }]
+        }
+    }])
     .directive('sidemenu', [function() {
         return {
             restrict: 'E',
