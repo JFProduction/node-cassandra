@@ -10,11 +10,15 @@ app.use(bodyparser.json());
 // connecting to cassandra
 // change the options based on what you need (JSON)
 var client = new cass.Client({ contactPoints: ['127.0.0.1'] });
-client.connect(function(err, result) {
-    console.log('We have connected');
+client.connect((err, result) => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log('We have connected');
+    }
 });
 
-app.get('/validate/:uname', function(req, res) {
+app.get('/validate/:uname', (req, res) => {
     var query = 'SELECT * FROM testing.users WHERE user_name=?';
     client.execute(query, [req.params.uname], function(err, result) {
         if (err) {
@@ -31,7 +35,7 @@ app.get('/validate/:uname', function(req, res) {
     });
 });
 
-app.get('/users', function(req, res) {
+app.get('/users', (req, res) => {
     var getUsers = 'SELECT * FROM testing.users';
     client.execute(getUsers, [], function(err, result) {
         if (err) {
@@ -42,7 +46,7 @@ app.get('/users', function(req, res) {
     });
 });
 
-app.get('/user/:id', function(req, res) {
+app.get('/user/:id', (req, res) => {
     var query = 'SELECT * FROM testing.users WHERE id=? ALLOW FILTERING';
     console.log(req.params.id);
     client.execute(query, [req.params.id], function(err, result) {
@@ -54,7 +58,7 @@ app.get('/user/:id', function(req, res) {
     });
 });
 
-app.post('/addUser', function(req, res) {
+app.post('/addUser', (req, res) => {
     var id = cass.types.uuid();
     var query = "INSERT INTO testing.users (id, name, user_name, email, join_date, last_active) " +
          " VALUES (?, ?, ?, ?, ?, ?)";
@@ -71,6 +75,6 @@ app.post('/addUser', function(req, res) {
     );
 });
 
-app.listen(3090, function() {
+app.listen(3090, () => {
     console.log('app started on port 3090');
 });

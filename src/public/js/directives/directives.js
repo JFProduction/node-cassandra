@@ -20,7 +20,7 @@ angular.module('app.directives', [])
         return {
             restrict: 'E',
             templateUrl: 'views/templates/sidebar.tmp.html',
-            controller: ['$scope', function($scope) {
+            controller: ['$scope', '$location', function($scope, $location) {
                 $scope.toggleMenu = function() {
                     $('.sidemenu-wrapper').toggleClass('hide-menu');
                     $('.menu-btn').toggleClass('menu-btn-left');
@@ -36,7 +36,6 @@ angular.module('app.directives', [])
             templateUrl: 'views/templates/messaging.tmp.html',
             controller: ['$scope', function($scope) {
                 $scope.minimizeChat = function() {
-                    // $('.msg-container').toggleClass('minimize');
                     $('.message-wrapper').toggleClass('minimize');
                     $('.chat-btn').toggleClass('glyphicon glyphicon-triangle-bottom');
                     $('.chat-btn').toggleClass('glyphicon glyphicon-triangle-top');
