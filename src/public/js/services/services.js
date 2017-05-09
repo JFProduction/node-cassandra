@@ -53,4 +53,23 @@ angular.module('app.services', [])
             });
             return deferred.promise;
         }
+    }])
+    .service('SearchService', [function() {
+        this.users = [];
+
+        this.getUsers = function() {
+            return this.users;
+        }
+
+        this.setUsers = function(users) {
+            this.users = users;
+        }
+
+        this.filterUsers = function(name) {
+            this.users = this.users.filter((usr) => {
+                if (usr.user_name.indexOf(name) !== -1) {
+                    return usr;
+                }
+            })
+        }
     }]);

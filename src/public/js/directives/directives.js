@@ -1,27 +1,31 @@
 angular.module('app.directives', [])
-    .directive('userdetails', [function() {
+    .directive('userdetails', [() => {
         return {
             restrict: 'E',         
             templateUrl: 'views/templates/user.tmp.html'
         }
     }])
-    .directive('searchnav', [function() {
+    .directive('searchnav', [() => {
         return {
             restrict: 'E',
             templateUrl: 'views/templates/searchnav.tmp.html',
-            controller: ['$scope', function($scope) {
-                $scope.search = function() {
+            controller: ['$scope', 'SearchService', ($scope, SearchService) => {
+                $scope.search = () => {
                     console.log('you have searched...');
+                }
+
+                $scope.filterUsers = () => {
+                    SearchService.filterUsers($scope.search.input);
                 }
             }]
         }
     }])
-    .directive('sidemenu', [function() {
+    .directive('sidemenu', [() => {
         return {
             restrict: 'E',
             templateUrl: 'views/templates/sidebar.tmp.html',
-            controller: ['$scope', '$location', function($scope, $location) {
-                $scope.toggleMenu = function() {
+            controller: ['$scope', '$location', ($scope, $location) => {
+                $scope.toggleMenu = () => {
                     $('.sidemenu-wrapper').toggleClass('hide-menu');
                     $('.menu-btn').toggleClass('menu-btn-left');
                     $('.menu-btn').toggleClass('glyphicon glyphicon-triangle-right');
@@ -30,12 +34,12 @@ angular.module('app.directives', [])
             }]
         }
     }])
-    .directive('messaging', [function() {
+    .directive('messaging', [() => {
         return {
             restrict: 'E',         
             templateUrl: 'views/templates/messaging.tmp.html',
-            controller: ['$scope', function($scope) {
-                $scope.minimizeChat = function() {
+            controller: ['$scope', ($scope) => {
+                $scope.minimizeChat = () => {
                     $('.message-wrapper').toggleClass('minimize');
                     $('.chat-btn').toggleClass('glyphicon glyphicon-triangle-bottom');
                     $('.chat-btn').toggleClass('glyphicon glyphicon-triangle-top');

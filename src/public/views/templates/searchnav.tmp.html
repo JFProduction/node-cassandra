@@ -1,7 +1,7 @@
 <div class='searchnav-wrapper'>
     <form name='search' ng-submit='search(this)' class='search-form'>
         <i class="search-icon fa fa-search" aria-hidden="true"></i>
-        <input class='search-input' type='text' name='search-input' 
+        <input class='search-input' type='text' name='search-input' ng-change='filterUsers()'
             ng-model='search.input' placeholder="Search here" required />
     </form>
 </div>

@@ -4,14 +4,14 @@ var socket = io('localhost:3100');
 //       so we have a username
 var uname = 'jimmyfargo';
 
-$(function() {
+$(() => {
 	var users = {};
 
-	$('#usr-msg').on('input', function() {
+	$('#usr-msg').on('input', () => {
 		socket.emit('typing', uname);
 	});
 
-	socket.on('chat message', function(m, name, online) {
+	socket.on('chat message', (m, name, online) => {
 		if (!$('#usr-msg').is(':focus')) {
 			alert(name + " said something!!");
 		}
@@ -25,12 +25,12 @@ $(function() {
 		$('#msgs').scrollTop($('#msgs').height());
 	});
 
-	socket.on('typing', function(name) {
+	socket.on('typing', (name) => {
 		$('#' + name + '-typing').css('display', 'inline-block');
 	});
 });
 
-function sendMessage() {
+ function sendMessage() {
     var trimmed = $('#usr-msg').val().trim();
     if ("" !== trimmed) {
         var msg = removeTags($('#usr-msg').val().trim());
@@ -47,18 +47,18 @@ function sendMessage() {
     return false;
 }
 
-function addCommand(cmd, cmds) {
+ function addCommand(cmd, cmds) {
 	var scriptSplit = cmd.split('<');
 	var cmd = scriptSplit[0].split(' ')[1];
 	var outcome = '<' + scriptSplit[1]
 
-	$.get('/addCmd?cmd=' + cmd + '&outcome=' + outcome, function(data, status) {
+	$.get('/addCmd?cmd=' + cmd + '&outcome=' + outcome, (data, status) => {
 		if (status === 'success') {
 			alert(data.msg)
 		}
 	});
 
-	$.get('/cmds', function(data, status) {
+	$.get('/cmds', (data, status) => {
 		if (status === 'success') {
 			cmds = data;
 		} else {
@@ -67,14 +67,14 @@ function addCommand(cmd, cmds) {
 	})
 }
 
-function showCommands(cmds) {
+ function showCommands(cmds) {
 	for (var cmd in cmds) {
 		$('#msgs').append($('<li>').html('<b>' + cmd + ':</b> ' + cmds[cmd])); 
 	}
 	$('#usr-msg').val('');
 }
 
-function removeTags(html) {
+ function removeTags(html) {
 	var tagBody = '(?:[^"\'>]|"[^"]*"|\'[^\']*\')*';
 
 	var tagOrComment = new RegExp(
@@ -98,7 +98,7 @@ function removeTags(html) {
 	return html.replace(/</g, '&lt;');
 }
 
-function getMsgTime() {
+ function getMsgTime() {
     var date = new Date();
     return (date.getHours() >= 10 ? date.getHours() : '0' + date.getHours()) + ":" 
                 + (date.getMinutes() >= 10 ? date.getMinutes() : '0' + date.getMinutes()) + ":" 

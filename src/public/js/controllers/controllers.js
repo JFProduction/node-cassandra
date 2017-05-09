@@ -1,33 +1,42 @@
 angular.module('app.controllers', [])
-    .controller('LoginCtrl', ['$scope', 'LoginService', '$location', function($scope, LoginService, $location) {
-        $scope.validateUser = function() {
-            LoginService.signin($scope.uname).then(function(resp) {
+    .controller('LoginCtrl', ['$scope', 'LoginService', '$location', ($scope, LoginService, $location) => {
+        $scope.validateUser = () => {
+            LoginService.signin($scope.uname).then((resp) => {
                 if (resp.data.success) {
                     LoginService.setLoggedIn(true);
                     $location.path(resp.data.path);
                 }
-            }).catch(function(err) {
+            }).catch((err) => {
                 console.log(err);
                 alert(err.data.message.message);
             });
         }
     }])
-    .controller('MainCtrl', ['$scope', 'UserService', 'LoginService', '$location', function($scope, UserService, LoginService, $location) {
+    .controller('MainCtrl', ['$scope', 'UserService', 'LoginService', '$location', 'SearchService',
+            ($scope, UserService, LoginService, $location, SearchService) => {
         if (LoginService.isLoggedIn()) {
-            UserService.getUsers().then(function(usrs) {
+            $scope.service = SearchService;
+            UserService.getUsers().then((usrs) => {
                 $scope.users = usrs.data;
+                SearchService.setUsers($scope.users);
+            });
+
+            $scope.$watch((scope) => {
+                return scope.service.getUsers();
+            }, (filteredUsers, users) => {
+                $scope.users = filteredUsers;
             });
         } else {
             $location.path('/');
         }
     }])
-    .controller('AddUsrCtrl', ['$scope', 'UserService', 'LoginService', '$location', function($scope, UserService, LoginService, $location) {
+    .controller('AddUsrCtrl', ['$scope', 'UserService', 'LoginService', '$location', ($scope, UserService, LoginService, $location) => {
         if (LoginService.isLoggedIn()) {
-            $scope.addUser = function(form) {
+            $scope.addUser = (form) => {
                 if ($scope.userForm.$valid) {
-                    UserService.addUser(form.user).then(function(added) {
+                    UserService.addUser(form.user).then((added) => {
                         console.log(added);
-                    }, function(err) {
+                    }, (err) => {
                         console.log(err);
                     });
                 }
@@ -37,10 +46,10 @@ angular.module('app.controllers', [])
         }
     }])
     .controller('UsrCtrl', ['$scope', '$routeParams', 'UserService', 
-        function($scope, $routeParams, UserService) {
-            UserService.getUser($routeParams.id).then(function(usr) {
+        ($scope, $routeParams, UserService) => {
+            UserService.getUser($routeParams.id).then((usr) => {
                 $scope.user = usr.data;
-            }, function(err) {
+            }, (err) => {
                 console.log(err);
             });
         }

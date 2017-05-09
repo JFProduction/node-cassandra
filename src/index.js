@@ -20,7 +20,7 @@ client.connect((err, result) => {
 
 app.get('/validate/:uname', (req, res) => {
     var query = 'SELECT * FROM testing.users WHERE user_name=?';
-    client.execute(query, [req.params.uname], function(err, result) {
+    client.execute(query, [req.params.uname], (err, result) => {
         if (err) {
             res.status(404).json({
                 message: err
@@ -37,7 +37,7 @@ app.get('/validate/:uname', (req, res) => {
 
 app.get('/users', (req, res) => {
     var getUsers = 'SELECT * FROM testing.users';
-    client.execute(getUsers, [], function(err, result) {
+    client.execute(getUsers, [], (err, result) => {
         if (err) {
             res.status(404).send({ msg: err });
         } else {
@@ -49,7 +49,7 @@ app.get('/users', (req, res) => {
 app.get('/user/:id', (req, res) => {
     var query = 'SELECT * FROM testing.users WHERE id=? ALLOW FILTERING';
     console.log(req.params.id);
-    client.execute(query, [req.params.id], function(err, result) {
+    client.execute(query, [req.params.id], (err, result) => {
         if (err) {
             res.status(500).send({ msg: err });
         } else {
@@ -64,12 +64,12 @@ app.post('/addUser', (req, res) => {
          " VALUES (?, ?, ?, ?, ?, ?)";
     console.log(req.body.name, req.body.username, req.body.email);
     client.execute(query, [id, req.body.name, req.body.username, req.body.email, new Date(), new Date()], 
-        function(err, result) {
+        (err, result) => {
             if (err) {
                 console.log(err);
                 res.status(500).send({ msg: err });
             } else {
-                res.json({ msg: req.body.username + ' was added' });
+                res.json({ status: 200, msg: req.body.username + ' was added' });
             }
         }
     );
